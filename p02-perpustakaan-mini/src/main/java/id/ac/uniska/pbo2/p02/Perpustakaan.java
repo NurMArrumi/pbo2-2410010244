@@ -20,54 +20,54 @@ public class Perpustakaan {
     
     public void tambah(Koleksi koleksi) {
         daftarKoleksi.add(koleksi);
-    }
-    
+}
+
     public Koleksi cari(String kode) {
         for (Koleksi k : daftarKoleksi) {
             if (k.getKode().equals(kode)) {
-               return k; 
+                return k;
             }
         }
         return null;
-    }
+}
     
     public boolean pinjam(String kode, Anggota anggota) {
-        Koleksi koleksi = cari(kode);
-        if (koleksi == null || !koleksi.pinjam()) {
-            return false;
-        }
-        peminjam.put(kode, anggota) ;
-        return true;
+    Koleksi koleksi = cari(kode);
+    if (koleksi == null || !koleksi.pinjam()) {
+    return false;
     }
-    
+    peminjam.put(kode, anggota);
+    return true;
+} 
+ 
     public long kembalikan(String kode, int hariTerlambat) {
-        Koleksi koleksi = cari(kode);
-        if (koleksi == null || koleksi.getStatus() == StatusKoleksi.TERSEDIA) {
-            return 0;
+    Koleksi koleksi = cari(kode);
+    if (koleksi == null || koleksi.getStatus() == StatusKoleksi.TERSEDIA) {
+        return 0;
+    }
+    koleksi.kembalikan();
+    peminjam.remove(kode);
+    return koleksi.hitungDenda(hariTerlambat);
+}
+
+public Anggota getPeminjam(String kode) {
+    return peminjam.get(kode);
+}
+
+public int jumlahTersedia() {
+    int jumlah = 0;
+    for (Koleksi k : daftarKoleksi) {
+        if (k.getStatus() == StatusKoleksi.TERSEDIA) {
+            jumlah++;
         }
-        koleksi.kembalikan();
-        peminjam.remove(kode);
-        return koleksi.hitungDenda(hariTerlambat);
     }
-    
-    public Anggota getPeminjam(String kode) {
-        return peminjam.get(kode);
-    }
-    
-    public int jumlahTersedia() {
-        int jumlah = 0;
-        for (Koleksi k : daftarKoleksi) {
-            if (k.getStatus() == StatusKoleksi.TERSEDIA) {
-                jumlah++;
-            }
-        }
-        return jumlah;
-    }
-    
+    return jumlah;
+}
+
     public List<Koleksi> getDaftarKoleksi() {
         return List.copyOf(daftarKoleksi);
-    }
-    
+        }
+
     public List<Koleksi> cariJudul(String kataKunci) {
         List<Koleksi> hasil = new ArrayList<>();
         String kunci = kataKunci.toLowerCase();
@@ -78,5 +78,4 @@ public class Perpustakaan {
         }
         return hasil;
     }
-    
-  }
+}

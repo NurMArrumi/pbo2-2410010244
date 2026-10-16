@@ -9,7 +9,7 @@ import java.util.List;
  * @author muham
  */
 public class AplikasiPerpustakaan {
-    
+   
     public static void main(String[] args) {
         Perpustakaan perpus = new Perpustakaan();
         perpus.tambah(new Buku("B001", "Laskar Pelangi", 2005, "Andrea Hirata"));
@@ -27,41 +27,40 @@ public class AplikasiPerpustakaan {
         cetakPinjam(perpus, "B002", budi);
         cetakPinjam(perpus, "M001", budi);
         System.out.println("Peminjam B002: " + perpus.getPeminjam("B002").nama());
-
+        
         System.out.println();
         cetakKembali(perpus, "B002", 2);
         cetakKembali(perpus, "M001", 3);
-
+        
         System.out.println();
         System.out.println("Koleksi tersedia: " + perpus.jumlahTersedia()
-        + " dari " + perpus.getDaftarKoleksi().size());
+            + " dari " + perpus.getDaftarKoleksi().size());
         
         System.out.println();
         cetakHasilCari(perpus, "code");
         cetakPinjam(perpus, "S001", siti);
-        
-       
     }
     
     private static void tampilkanDaftar(Perpustakaan perpus) {
-        System.out.println("== Daftar koleksi==");
-        for (Koleksi k : perpus.getDaftarKoleksi()){
+        System.out.println("=== Daftar Koleksi ===");
+        for (Koleksi k : perpus.getDaftarKoleksi() ) {
             System.out.println(k);
         }
     }
-      
-     private static void cetakPinjam(Perpustakaan perpus, String kode, Anggota anggota) {
-         boolean berhasil = perpus.pinjam(kode, anggota);
-         System.out.println(anggota.nama() + " meminjam " + kode + ": "
-+             (berhasil ? "berhasil" : "gagal"));
-     }
-     
+    
+    private static void cetakPinjam(Perpustakaan perpus, String kode, Anggota anggota) {
+        boolean berhasil = perpus.pinjam(kode, anggota);
+        System.out.println(anggota.nama() + " Meminjam " + kode + ": "
+        + (berhasil ? "berhasil" : "gagal"));
+    }
+    
     private static void cetakKembali(Perpustakaan perpus, String kode, int hariTerlambat) {
-        long denda = perpus.kembalikan(kode, hariTerlambat);
-        System.out.println("Pengembalian " + kode + " terlambat " + hariTerlambat
+    long denda = perpus.kembalikan(kode, hariTerlambat);
+    System.out.println("Pengembalian " + kode + " terlambat " + hariTerlambat
             + " hari, denda Rp" + denda);
-    }        
-     private static void cetakHasilCari(Perpustakaan perpus, String kataKunci) {
+    }
+    
+    private static void cetakHasilCari(Perpustakaan perpus, String kataKunci) {
         List<Koleksi> hasil = perpus.cariJudul(kataKunci);
         System.out.println("Hasil pencarian " + kataKunci + " : "
                             + hasil.size() + " Koleksi");
@@ -70,3 +69,4 @@ public class AplikasiPerpustakaan {
         }
     }
 }
+
