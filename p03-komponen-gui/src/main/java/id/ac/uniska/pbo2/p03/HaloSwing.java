@@ -33,22 +33,20 @@ public class HaloSwing extends javax.swing.JFrame {
         pesanLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Halo Swing");
 
         pesanLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pesanLabel.setText("Halo, Swing, dan FlatLaf");
-        pesanLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pesanLabel.setText(" Halo,Swing dan FlatLaf");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pesanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(pesanLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pesanLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+            .addComponent(pesanLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -57,13 +55,9 @@ public class HaloSwing extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-        
-    public static void main(String args[]) {
-        // Blok Nimbus buatan NetBeans diganti dengan tema FlatLaf
+    public static void main(String args[] ) {
         FlatLightLaf.setup();
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(() -> new HaloSwing().setVisible(true));
     }
 
